@@ -82,6 +82,7 @@ jobs:
         K3S_CONF: ${{ secrets.KUBECONFIG_CONTENT }}
       run: |
         mkdir -p ~/.kube
+        echo "$K3S_CONF"
         echo "$K3S_CONF" > ~/.kube/config
         chmod 600 ~/.kube/config
         cat ~/.kube/config
