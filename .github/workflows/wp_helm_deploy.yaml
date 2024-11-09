@@ -79,7 +79,7 @@ jobs:
 
     - name: Install and configure kubectl
       env:
-        K3S_CONF: ${{ secrets.KUBECONFIG_CONTENT }}
+        K3S_CONF: ${{ vars.K3S_CONF }}
       run: |
         mkdir -p ~/.kube
         echo "$K3S_CONF"
