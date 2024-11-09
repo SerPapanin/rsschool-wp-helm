@@ -59,6 +59,9 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
+            -backend-config="bucket=${{ env.AWS_BUCKET_NAME }}"
+            -backend-config="key=${{ env.AWS_TF_STATE_FILE_NAME }}"
+            -backend-config="region=${{ env.AWS_REGION }}"
 
     - name: Add Runner IP to Security Group
       env:
