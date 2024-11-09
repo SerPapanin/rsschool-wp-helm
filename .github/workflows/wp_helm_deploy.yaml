@@ -81,8 +81,10 @@ jobs:
       env:
         K3S_CONF: ${{ secrets.KUBECONFIG_CONTENT }}
       run: |
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        mkdir -p ~/.kube
         echo "$K3S_CONF" > ~/.kube/config
+        chmod 600 ~/.kube/config
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         kubectl get nodes
 
     - name: Remove Runner IP from Security Group
