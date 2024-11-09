@@ -63,12 +63,23 @@ jobs:
             -backend-config="key=${{ env.AWS_TF_STATE_FILE_NAME }}"
             -backend-config="region=${{ env.AWS_REGION }}"
 
+    - name: Plan Add Runner IP to Security Group
+      env:
+        RUNNER_IP: ${{ env.RUNNER_IP }}
+        BASTION_SG_ID: ${{ env.BASTION_SG_ID }}
+      run: |
+        terraform plan -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+
     - name: Add Runner IP to Security Group
       env:
         RUNNER_IP: ${{ env.RUNNER_IP }}
         BASTION_SG_ID: ${{ env.BASTION_SG_ID }}
       run: |
         terraform plan -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+
+    - name: Remove Runner IP from Security Group
+      run: terraform destroy -target="aws_security_group_rule.allow_runner_api" -auto-approve
+
 
     #- name: Remove Runner IP from Security Group
     #  run: terraform destroy -target="aws_security_group_rule.allow_runner_api" -auto-approve
