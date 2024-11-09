@@ -75,9 +75,8 @@ jobs:
         RUNNER_IP: ${{ env.RUNNER_IP }}
         BASTION_SG_ID: ${{ env.BASTION_SG_ID }}
       run: |
-        terraform plan -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
-
-        # terraform apply -auto-approve -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+        terraform plan -target=aws_security_group_rule.allow_runner_ap -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+        terraform apply -auto-approve -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
 
     - name: Install and configure kubectl
       env:
