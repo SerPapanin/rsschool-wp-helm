@@ -84,6 +84,7 @@ jobs:
         mkdir -p ~/.kube
         echo "$K3S_CONF" > ~/.kube/config
         chmod 600 ~/.kube/config
+        cat ~/.kube/config
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         kubectl get nodes
 
