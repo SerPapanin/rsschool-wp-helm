@@ -75,17 +75,15 @@ jobs:
         RUNNER_IP: ${{ env.RUNNER_IP }}
         BASTION_SG_ID: ${{ env.BASTION_SG_ID }}
       run: |
-        terraform plan -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+        terraform apply -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
 
     - name: Install and configure kubectl
       env:
         K3S_CONF: ${{ vars.K3S_CONF }}
       run: |
         mkdir -p ~/.kube
-        echo "$K3S_CONF"
         echo "$K3S_CONF" > ~/.kube/config
         chmod 600 ~/.kube/config
-        cat ~/.kube/config
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         kubectl get nodes
 
