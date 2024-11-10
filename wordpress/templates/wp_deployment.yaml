@@ -21,14 +21,14 @@ spec:
       - image: {{ .Values.wp.image.repository }}:{{ .Values.wp.image.tag }}
         name: {{ .Values.app }}
         env:
-        - name: WORDPRESS_DB_HOST
-          value: {{ .Values.app }}-mysql
-        - name: WORDPRESS_DB_NAME
-          value: {{ .Values.mysql.MYSQL_DATABASE }}
-        - name: WORDPRESS_DB_PASSWORD
-          value: {{ .Values.mysql.MYSQL_PASSWORD }}
-        - name: WORDPRESS_DB_USER
-          value: {{ .Values.mysql.MYSQL_USER }}
+          - name: WORDPRESS_DB_HOST
+            value: {{ .Values.app }}-mysql
+          - name: WORDPRESS_DB_NAME
+            value: {{ .Values.mysql.MYSQL_DATABASE }}
+          - name: WORDPRESS_DB_PASSWORD
+            value: {{ .Values.mysql.MYSQL_PASSWORD }}
+          - name: WORDPRESS_DB_USER
+            value: {{ .Values.mysql.MYSQL_USER }}
         ports:
           - containerPort: {{ .Values.wp.port }}
         volumeMounts:

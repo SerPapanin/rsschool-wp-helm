@@ -89,7 +89,7 @@ jobs:
         #Install HELM
         snap install helm --classic
         helm repo add my-wp https://SerPapanin.github.io/rsschool-wp-helm/
-        helm install my-wordpress my-wp/wordpress --version 0.1.2 --values ~/Documents/rsschool-wp-helm/helm/wordpress-chart/wordpress/values.yaml
+        helm install my-wordpress my-wp/wordpress --version 0.1.2 --values https://raw.githubusercontent.com/SerPapanin/rsschool-wp-helm/refs/heads/gh-pages/wordpress/values.yaml
 
     - name: Remove Runner IP from Security Group
       run: terraform destroy -target="aws_security_group_rule.allow_runner_api" -auto-approve
