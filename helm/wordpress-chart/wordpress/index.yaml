@@ -9,6 +9,6 @@ entries:
     name: wordpress
     type: application
     urls:
-    - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.0.tgz
+    - https://SerPapanin.github.io/rsschool-wp-helm/helm/wordpress-chart/wordpress/wordpress-0.1.0.tgz
     version: 0.1.0
 generated: "2024-11-10T21:50:30.196666775+04:00"
