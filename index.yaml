@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  wordpress:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2024-11-11T01:59:44.987114024+04:00"
+    description: A Helm chart for WP Deployment rs-school
+    digest: 3067786d50445fb94af3371849cade8f3e39bf443037e45317494797d6ca5fdb
+    name: wordpress
+    type: application
+    urls:
+    - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-11T01:59:44.986705341+04:00"
