@@ -4,10 +4,10 @@ metadata:
   name: wordpress-mysql
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.app }}
+    app: wordpress-mysql
 spec:
   ports:
     - port: {{ .Values.mysql.port }}
   selector:
-    app: {{ .Values.app }}
+    app: wordpress-mysql
   clusterIP: None

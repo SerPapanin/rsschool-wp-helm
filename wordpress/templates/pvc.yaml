@@ -19,7 +19,7 @@ metadata:
   name: mysql-pvc
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.app }}
+    app: wordpress-mysql
 spec:
   accessModes:
     - ReadWriteOnce

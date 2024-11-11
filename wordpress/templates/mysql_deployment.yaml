@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.app }}-mysql
+  name: wordpress-mysql
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.app }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.app }}
+      app: wordpress-mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.app }}
+        app: wordpress-mysql
     spec:
       containers:
       - image: {{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}
-        name: mysql
+        name: wordpress-mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: {{ .Values.mysql.MYSQL_ROOT_PASSWORD }}
