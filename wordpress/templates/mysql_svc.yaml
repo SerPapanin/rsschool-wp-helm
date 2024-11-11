@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app }}-mysql
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.app }}
+spec:
+  ports:
+    - port: {{ .Values.mysql.port }}
+  selector:
+    app: {{ .Values.app }}
+  clusterIP: None
