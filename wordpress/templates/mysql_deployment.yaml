@@ -4,17 +4,17 @@ metadata:
   name: {{ .Values.app }}-mysql
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.app }}
+    app: {{ .Values.app }}-mysql
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.app }}
+      app: {{ .Values.app }}-mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.app }}
+        app: {{ .Values.app }}-mysql
     spec:
       containers:
       - image: {{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}
