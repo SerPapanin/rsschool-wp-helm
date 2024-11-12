@@ -3,7 +3,7 @@ entries:
   wordpress:
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2024-11-11T05:30:45.258051789+04:00"
+    created: "2024-11-12T19:22:56.741009077+04:00"
     description: A Helm chart for WP Deployment rs-school
     digest: 02c1611b3427cacea510912eee9fd21b73ed98b17d2ceac0a56e262c44e5b91a
     name: wordpress
@@ -12,13 +12,43 @@ entries:
     - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.4.tgz
     version: 0.1.4
   - apiVersion: v2
-    appVersion: 1.0.2
-    created: "2024-11-11T05:30:45.257806158+04:00"
+    appVersion: 1.0.3
+    created: "2024-11-12T19:22:56.740501936+04:00"
     description: A Helm chart for WP Deployment rs-school
-    digest: 3d7403167405c89067ba805df861c8f74f542e8fdcc35916e913e1985f24a8c7
+    digest: 89f9099caf551f254e897c400dedf21ff34307e5a303ebfc265c4c165cd14531
+    name: wordpress
+    type: application
+    urls:
+    - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2024-11-12T19:22:56.740066651+04:00"
+    description: A Helm chart for WP Deployment rs-school
+    digest: a8b64759773255157f8fe34983293c001470b446596ca3615e13182a84b4a58e
     name: wordpress
     type: application
     urls:
     - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.2.tgz
     version: 0.1.2
-generated: "2024-11-11T05:30:45.257478148+04:00"
+  - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2024-11-12T19:22:56.739540059+04:00"
+    description: A Helm chart for WP Deployment rs-school
+    digest: 410e0d7295d46a127c6990b683551045874db634a6ca918f18df18f299e27758
+    name: wordpress
+    type: application
+    urls:
+    - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2024-11-12T19:22:56.738947613+04:00"
+    description: A Helm chart for WP Deployment rs-school
+    digest: 3067786d50445fb94af3371849cade8f3e39bf443037e45317494797d6ca5fdb
+    name: wordpress
+    type: application
+    urls:
+    - https://SerPapanin.github.io/rsschool-wp-helm/wordpress-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-12T19:22:56.737028399+04:00"
