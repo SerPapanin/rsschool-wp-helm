@@ -16,10 +16,10 @@ mysql:
     tag: 8.0
   port: 3306
   mountPath: /var/lib/mysql
-  MYSQL_ROOT_PASSWORD: root-password
+  MYSQL_ROOT_PASSWORD: root-password321
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
-  MYSQL_PASSWORD: my-secret-password
+  MYSQL_PASSWORD: my-secret-password321
 
 persistence:
   size: 2Gi

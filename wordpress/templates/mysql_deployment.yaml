@@ -30,7 +30,6 @@ spec:
           value: {{ .Values.mysql.MYSQL_PASSWORD }}
         ports:
         - containerPort: 3306
-          name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: {{ .Values.mysql.mountPath }}
