@@ -76,7 +76,7 @@ jobs:
         BASTION_SG_ID: ${{ vars.BASTION_SG_ID }}
       run: |
         terraform plan -target=aws_security_group_rule.allow_runner_ap -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
-        TF_LOG=DEBUG terraform apply -auto-approve -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
+        terraform apply -auto-approve -target=aws_security_group_rule.allow_runner_api -var="runner_ip=${RUNNER_IP}/32" -var="bastion_sg_id=${BASTION_SG_ID}"
 
     - name: Install and configure kubectl
       env:
@@ -86,7 +86,11 @@ jobs:
         echo "$K3S_CONF" > ~/.kube/config
         chmod 600 ~/.kube/config
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        helm repo add my-wp https://github.com/SerPapanin/rsschool-wp-helm/
+        helm install wordpress my-wp/wordpress --version 0.1.3
         kubectl get nodes
+        kubectl get all
+        kubectl get all -n wordpress
 
     - name: Remove Runner IP from Security Group
       run: terraform destroy -target="aws_security_group_rule.allow_runner_api" -auto-approve
