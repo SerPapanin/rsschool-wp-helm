@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.app }}
+spec:
+  replicas: {{ .Values.wp.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+    spec:
+      containers:
+      - image: {{ .Values.wp.image.repository }}:{{ .Values.wp.image.tag }}
+        name: {{ .Values.app }}
+        env:
+          - name: WORDPRESS_DB_HOST
+            value: wordpress-mysql
+          - name: WORDPRESS_DB_NAME
+            value: {{ .Values.mysql.MYSQL_DATABASE }}
+          - name: WORDPRESS_DB_PASSWORD
+            value: {{ .Values.mysql.MYSQL_PASSWORD }}
+          - name: WORDPRESS_DB_USER
+            value: {{ .Values.mysql.MYSQL_USER }}
+        ports:
+          - containerPort: {{ .Values.wp.port }}
+        volumeMounts:
+          - name: {{ .Values.app }}-persistent-storage
+            mountPath: {{ .Values.wp.mountPath }}
+      volumes:
+        - name: {{ .Values.app }}-persistent-storage
+          persistentVolumeClaim:
+            claimName: {{ .Values.app }}-pvc
